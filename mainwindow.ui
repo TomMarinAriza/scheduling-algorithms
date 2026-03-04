@@ -1,0 +1,597 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1200</width>
+    <height>800</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Simulador de Algoritmos de Planificacion</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout_main">
+    <item>
+     <widget class="QLabel" name="titleLabel">
+      <property name="text">
+       <string>Simulador de Algoritmos de Planificacion de Procesos</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="styleSheet">
+       <string>font-size: 18px; font-weight: bold; margin: 10px;</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="inputTab">
+       <attribute name="title">
+        <string>Entrada de Procesos</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_input">
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_controls">
+          <item>
+           <widget class="QLabel" name="processCountLabel">
+            <property name="text">
+             <string>Numero de Procesos:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSpinBox" name="processCountSpinBox">
+            <property name="minimum">
+             <number>1</number>
+            </property>
+            <property name="maximum">
+             <number>20</number>
+            </property>
+            <property name="value">
+             <number>3</number>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="quantumLabel">
+            <property name="text">
+             <string>Quantum:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSpinBox" name="quantumSpinBox">
+            <property name="minimum">
+             <number>1</number>
+            </property>
+            <property name="maximum">
+             <number>20</number>
+            </property>
+            <property name="value">
+             <number>2</number>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QTableWidget" name="processTable">
+          <property name="alternatingRowColors">
+           <bool>true</bool>
+          </property>
+          <column>
+           <property name="text">
+            <string>Proceso</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Tiempo Llegada</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Rafaga</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Prioridad</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Quantum</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_buttons">
+          <item>
+           <spacer name="horizontalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="calculateButton">
+            <property name="text">
+             <string>Calcular Algoritmos</string>
+            </property>
+            <property name="styleSheet">
+             <string>QPushButton { background-color: #4CAF50; color: white; font-weight: bold; padding: 8px; border-radius: 4px; }</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="clearButton">
+            <property name="text">
+             <string>Limpiar</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="resultsTab">
+       <attribute name="title">
+        <string>Resultados</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_results">
+        <item>
+         <widget class="QTabWidget" name="algorithmsTabWidget">
+          <property name="currentIndex">
+           <number>0</number>
+          </property>
+          <widget class="QWidget" name="fifoTab">
+           <attribute name="title">
+            <string>FIFO</string>
+           </attribute>
+           <layout class="QVBoxLayout" name="verticalLayout_fifo">
+            <item>
+             <widget class="QTableWidget" name="fifoResultsTable">
+              <property name="alternatingRowColors">
+               <bool>true</bool>
+              </property>
+              <property name="selectionBehavior">
+               <enum>QAbstractItemView::SelectRows</enum>
+              </property>
+              <column>
+               <property name="text">
+                <string>Proceso</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Llegada</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Rafaga</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Prioridad</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Finalizacion</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Espera</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Retorno</string>
+               </property>
+              </column>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="fifoResultsStats">
+              <property name="text">
+               <string/>
+              </property>
+              <property name="styleSheet">
+               <string>font-size: 12px; padding: 10px; background-color: #ecf0f1; border-radius: 5px;</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="sjfTab">
+           <attribute name="title">
+            <string>SJF</string>
+           </attribute>
+           <layout class="QVBoxLayout" name="verticalLayout_sjf">
+            <item>
+             <widget class="QTableWidget" name="sjfResultsTable">
+              <property name="alternatingRowColors">
+               <bool>true</bool>
+              </property>
+              <property name="selectionBehavior">
+               <enum>QAbstractItemView::SelectRows</enum>
+              </property>
+              <column>
+               <property name="text">
+                <string>Proceso</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Llegada</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Rafaga</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Prioridad</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Finalizacion</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Espera</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Retorno</string>
+               </property>
+              </column>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="sjfResultsStats">
+              <property name="text">
+               <string/>
+              </property>
+              <property name="styleSheet">
+               <string>font-size: 12px; padding: 10px; background-color: #ecf0f1; border-radius: 5px;</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="priorityTab">
+           <attribute name="title">
+            <string>Prioridad</string>
+           </attribute>
+           <layout class="QVBoxLayout" name="verticalLayout_priority">
+            <item>
+             <widget class="QTableWidget" name="priorityResultsTable">
+              <property name="alternatingRowColors">
+               <bool>true</bool>
+              </property>
+              <property name="selectionBehavior">
+               <enum>QAbstractItemView::SelectRows</enum>
+              </property>
+              <column>
+               <property name="text">
+                <string>Proceso</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Llegada</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Rafaga</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Prioridad</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Finalizacion</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Espera</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Retorno</string>
+               </property>
+              </column>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="priorityResultsStats">
+              <property name="text">
+               <string/>
+              </property>
+              <property name="styleSheet">
+               <string>font-size: 12px; padding: 10px; background-color: #ecf0f1; border-radius: 5px;</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="rrTab">
+           <attribute name="title">
+            <string>Round Robin</string>
+           </attribute>
+           <layout class="QVBoxLayout" name="verticalLayout_rr">
+            <item>
+             <widget class="QTabWidget" name="rrSubTabWidget">
+              <property name="currentIndex">
+               <number>0</number>
+              </property>
+              <widget class="QWidget" name="rrFifoTab">
+               <attribute name="title">
+                <string>RR + FIFO</string>
+               </attribute>
+               <layout class="QVBoxLayout" name="verticalLayout_rrfifo">
+                <item>
+                 <widget class="QTableWidget" name="rrFifoResultsTable">
+                  <property name="alternatingRowColors">
+                   <bool>true</bool>
+                  </property>
+                  <property name="selectionBehavior">
+                   <enum>QAbstractItemView::SelectRows</enum>
+                  </property>
+                  <column>
+                   <property name="text">
+                    <string>Proceso</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>Llegada</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>Rafaga</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>Prioridad</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>Finalizacion</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>Espera</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>Retorno</string>
+                   </property>
+                  </column>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="rrFifoResultsStats">
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="styleSheet">
+                   <string>font-size: 12px; padding: 10px; background-color: #ecf0f1; border-radius: 5px;</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="rrSjfTab">
+               <attribute name="title">
+                <string>RR + SJF</string>
+               </attribute>
+               <layout class="QVBoxLayout" name="verticalLayout_rrsjf">
+                <item>
+                 <widget class="QTableWidget" name="rrSjfResultsTable">
+                  <property name="alternatingRowColors">
+                   <bool>true</bool>
+                  </property>
+                  <property name="selectionBehavior">
+                   <enum>QAbstractItemView::SelectRows</enum>
+                  </property>
+                  <column>
+                   <property name="text">
+                    <string>Proceso</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>Llegada</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>Rafaga</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>Prioridad</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>Finalizacion</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>Espera</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>Retorno</string>
+                   </property>
+                  </column>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="rrSjfResultsStats">
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="styleSheet">
+                   <string>font-size: 12px; padding: 10px; background-color: #ecf0f1; border-radius: 5px;</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="rrPriorityTab">
+               <attribute name="title">
+                <string>RR + Prioridad</string>
+               </attribute>
+               <layout class="QVBoxLayout" name="verticalLayout_rrpriority">
+                <item>
+                 <widget class="QTableWidget" name="rrPriorityResultsTable">
+                  <property name="alternatingRowColors">
+                   <bool>true</bool>
+                  </property>
+                  <property name="selectionBehavior">
+                   <enum>QAbstractItemView::SelectRows</enum>
+                  </property>
+                  <column>
+                   <property name="text">
+                    <string>Proceso</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>Llegada</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>Rafaga</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>Prioridad</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>Finalizacion</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>Espera</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>Retorno</string>
+                   </property>
+                  </column>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="rrPriorityResultsStats">
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="styleSheet">
+                   <string>font-size: 12px; padding: 10px; background-color: #ecf0f1; border-radius: 5px;</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1200</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
