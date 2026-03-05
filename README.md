@@ -19,7 +19,7 @@ Aplicación GUI desarrollada en Python con QT que implementa algoritmos de plani
 - Diagramas de Gantt interactivos
 - Cálculo automático de tiempos de espera y respuesta
 - **Quantum global**: El valor de quantum se aplica a todos los procesos por igual
-- ✅ Soporte para múltiples procesos (hasta 20)
+- Soporte para múltiples procesos (hasta 20)
 
 
 ## Uso del Quantum

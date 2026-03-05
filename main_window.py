@@ -305,9 +305,9 @@ class MainWindow(QMainWindow):
         layout.addWidget(self.rrSubTabWidget)
         
         # Sub-pestañas para RR
-        self.create_rr_subtab("RR + FIFO", "rrFifoResultsTable", "rr_fifo")
-        self.create_rr_subtab("RR + SJF", "rrSjfResultsTable", "rr_sjf") 
-        self.create_rr_subtab("RR + Prioridad", "rrPriorityResultsTable", "rr_priority")
+        self.create_rr_subtab("RR + FIFO Cola Fija", "rrFifoResultsTable", "rr_fifo")
+        self.create_rr_subtab("RR + SJF Cola Fija", "rrSjfResultsTable", "rr_sjf") 
+        self.create_rr_subtab("RR + Priority Cola Fija", "rrPriorityResultsTable", "rr_priority")
     
     def create_rr_subtab(self, name, table_attr, gantt_key):
         """Crea una sub-pestaña para Round Robin."""
@@ -595,9 +595,9 @@ class MainWindow(QMainWindow):
             ("FIFO", self.scheduler.schedule_fifo, "fifoResultsTable", "fifoResultsStats", "fifo"),
             ("SJF", self.scheduler.schedule_sjf, "sjfResultsTable", "sjfResultsStats", "sjf"), 
             ("Prioridad", self.scheduler.schedule_priority, "priorityResultsTable", "priorityResultsStats", "priority"),
-            ("Round Robin FIFO", self.scheduler.schedule_round_robin_fifo, "rrFifoResultsTable", "rrFifoResultsStats", "rr_fifo"),
-            ("Round Robin SJF", self.scheduler.schedule_round_robin_sjf, "rrSjfResultsTable", "rrSjfResultsStats", "rr_sjf"),
-            ("Round Robin Prioridad", self.scheduler.schedule_round_robin_priority, "rrPriorityResultsTable", "rrPriorityResultsStats", "rr_priority")
+            ("Round Robin FIFO - Cola Fija", self.scheduler.schedule_round_robin_fifo, "rrFifoResultsTable", "rrFifoResultsStats", "rr_fifo"),
+            ("Round Robin SJF - Cola Fija", self.scheduler.schedule_round_robin_sjf, "rrSjfResultsTable", "rrSjfResultsStats", "rr_sjf"),
+            ("Round Robin Priority - Cola Fija", self.scheduler.schedule_round_robin_priority, "rrPriorityResultsTable", "rrPriorityResultsStats", "rr_priority")
         ]
         
         for name, method, table_attr, stats_attr, gantt_key in algorithms:
@@ -614,7 +614,9 @@ class MainWindow(QMainWindow):
                 
                 # Mostrar diagrama de Gantt
                 if gantt_key in self.gantt_widgets:
-                    self.gantt_widgets[gantt_key].create_gantt_chart(results, name)
+                    # Usar el título del algoritmo si existe, si no usar el nombre estático
+                    chart_title = getattr(results, 'algorithm_title', name)
+                    self.gantt_widgets[gantt_key].create_gantt_chart(results, chart_title)
                 
             except Exception as e:
                 print(f"Error procesando {name}: {e}")

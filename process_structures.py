@@ -10,7 +10,7 @@ class Process:
         self.arrival_time = arrival_time
         self.burst_time = burst_time
         self.priority = priority
-        self.quantum = 2  # Quantum por defecto, puede ser sobrescrito
+        self.quantum = 2  
         self.remaining_time = burst_time
         self.completion_time = 0
         self.waiting_time = 0
@@ -43,6 +43,7 @@ class SchedulingResults:
         self.avg_waiting_time = 0.0
         self.avg_turnaround_time = 0.0
         self.execution_order = ""
+        self.algorithm_title = ""  # Título del algoritmo con detalles
     
     def calculate_averages(self):
         """Calcula los tiempos promedio de espera y retorno."""
